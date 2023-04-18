@@ -1,0 +1,90 @@
+.login-form-card-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.login-form-card-wrapper__inside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+    background-color: var(--color-primary);
+    width: fit-content;
+    padding: 80px 50px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.login-form-card-wrapper__inside input {
+    width: 18vw;
+    height: 4.6vh;
+    padding-left: 5px;
+    border: none;
+    outline: none;
+    font-family: var(--font-tertiary);
+    font-weight: bold;
+    letter-spacing: .1ch;
+    background-color: var(--color-input-bg);
+    border-radius: 8px;
+}
+
+/* .login-form-card-wrapper__usernameInput {
+} */
+
+.login-form-card-wrapper__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-tertiary);
+}
+
+.login-form-card-wrapper__buttons a {
+    text-decoration: underline;
+    color: #fff;
+    transition: .3s all ease-in-out;
+}
+
+.login-form-card-wrapper__buttons a:hover {
+    color: var(--color-button-secondary);
+}
+
+.login-form-card-wrapper__buttons__submit {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 16px;
+    font-size: 24px;
+    font-size: medium;
+    font-weight: 600;
+    border-radius: 8px;
+    background-color: var(--color-button-secondary);
+}
+
+.login-form-card-wrapper__buttons__submit svg {
+    width: 24px;
+}
+
+.login-form-card-wrapper__secure-fact-of-the-day-wrapper {
+    color: var(--text-dark-gray);
+    /* background-color: red; */
+    width: 40%;
+}
+
+.login-form-card-wrapper__secure-fact-of-the-day-wrapper h1 {
+    text-decoration: underline;
+    color: #d8bfd8;
+}
+.login-form-card-wrapper__secure-fact-of-the-day-wrapper h3 {
+    width: 100%;
+    text-align: justify;
+}
+
+.login-form-card-wrapper__secure-fact-of-the-day-wrapper__knew-that {
+    text-decoration: underline;
+    cursor: pointer;
+    transition: .3s all ease-in-out;
+    letter-spacing: .01ch;
+    font-family: var(--font-primary);
+}

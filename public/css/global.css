@@ -1,0 +1,93 @@
+:root {
+    --text-logo: #84dcc6;
+    --text-dark-gray: #3C3C3C;
+    --text-white: #fff;
+    --font-primary: 'Alkatra', cursive;
+    --font-secondary: 'Ubuntu', sans-serif;
+    --font-tertiary: 'Lato', sans-serif;
+    --color-primary: #666a93;
+    --color-primary-dark: #4b4e6d;
+    --color-body-bg: #95a3b3;
+    --color-layout-bg: #222222;
+    --color-button-secondary: #f1de39;
+    --color-input-bg: #e5e5e5;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-body-bg);
+    justify-content: space-between;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-white);
+}
+
+button {
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+h1,h2,h3,h4,h5,h6,p,li {
+    font-family: var(--font-secondary);
+}
+
+nav {
+    align-self: flex-start;
+    background-color: var(--color-layout-bg);
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
+}
+
+nav .logo {
+    cursor: pointer;
+}
+
+nav .logo a h2 {
+    letter-spacing: .1ch;
+    color: var(--text-logo);
+    font-family: var(--font-primary);
+}
+
+nav a .nav-items--item-1-btn {
+    background-color: var(--color-primary-dark);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 25px;
+    color: var(--text-white);
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    font-size: medium;
+    cursor: pointer;
+    transition: .3s all ease-in-out;
+}
+
+nav a .nav-items--item-1-btn:hover {
+    background-color: var(--color-primary);
+}
+
+.footer {
+    align-self: flex-end;
+    color: var(--text-logo);
+    background-color: var(--color-layout-bg);
+    font-family: var(--font-secondary);
+    padding: 10px 0;
+    display: grid;
+    place-content: center;
+    width: 100%;
+}
+
+.noselect {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
