@@ -2,9 +2,9 @@ import mysql from "mysql";
 import { promisify } from "util";
 
 const dbConn = mysql.createConnection({
-    host: 'localhost',
+    host: '127.0.0.1',
     user: 'root',
-    password: '',
+    password: 'Pr1nc3@8909',
     database: 'db_tinynet',
 });
 
