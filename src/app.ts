@@ -2,8 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import dbConn from "./config/mysql";
 
-const PORT = 3000;
-const DOMAIN = `127.0.0.1:${3000}`;
+const PORT = process.env.PORT || 3000;
+const DOMAIN = `127.0.0.1:${PORT}`;
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));

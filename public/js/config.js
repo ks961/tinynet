@@ -1,1 +1,1 @@
-const DOMAIN = '127.0.0.1:3000';
+const DOMAIN = '127.0.0.1:8778';
