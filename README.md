@@ -18,7 +18,7 @@ Tinynet URL Shortener is a web application that allows users to create shortened
 2. Setup a MySQL Database name `any_name` and change the same in database config under `src/config/mysql.ts`.
 3. Run the typescript compiler using `npm run tsc`.
 3. Run the application using `npm run dev`.
-4. Open the application in your web browser at `http://localhost:3000`.
+4. Open the application in your web browser at `http://localhost:PORT`.
 
 ## API Endpoints
 
