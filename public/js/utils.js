@@ -4,7 +4,7 @@ function requestFailedError() {
 }
 
 function verifyHasProtocol(url) {
-    return (!url.startsWith('http') || !url.startsWith('https'));    
+    return (url.startsWith('http') || url.startsWith('https'));    
 }
 
 /* TODO: Seperate this function to different file. */

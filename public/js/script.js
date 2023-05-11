@@ -36,10 +36,14 @@ async function requestForShortUrl(requestUrl) {
     }
 }
 
-function unsecureCopyToClipboard() {
-    shortUrlInput.select();
+function unsecureCopyToClipboard(text) {
+    const input = document.createElement("input");
+    input.value = text;
+    input.style.display = "none";
+    document.body.appendChild(input);
+    input.select();
     document.execCommand("copy");
-    window.getSelection().removeAllRanges();
+    document.body.removeChild(input);
 }
 
 async function handleShortUrlCopy() {
@@ -48,7 +52,7 @@ async function handleShortUrlCopy() {
     if(url.length <= 0) return;
 
     (window.isSecureContext && navigator.clipboard) ?
-        await navigator.clipboard.writeText(url) : unsecureCopyToClipboard();
+        await navigator.clipboard.writeText(url) : unsecureCopyToClipboard(url);
 
     copySuccessFeedback();
 }
@@ -63,5 +67,5 @@ function gotoLogin() {
 }
 
 /* Event Listener */
-
+    
 /* END */

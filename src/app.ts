@@ -21,6 +21,9 @@ import factsRoute from "./routes/public/facts";
 import homeRoute from "./routes/protected/home";
 import logoutRoute from "./routes/public/logout";
 import shortUrlRoute from "./routes/public/shorturl";
+// import { test_code } from "./utils/logger";
+
+// test_code();
 
 app.use(indexRoute);
 app.use(loginRoute);

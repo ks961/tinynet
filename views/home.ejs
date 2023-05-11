@@ -27,17 +27,68 @@
                             </svg>                              
                         </button>
                     </div>
-                    <button type="submit" id="submitBtn" class="main-wrapper__submit-btn">Tiny it.</button>
+                    <div class="main-wrapper__btn-wrapper">
+                        <button type="submit" id="tinyItBtn" class="main-wrapper__btn main-wrapper__submit-btn">
+                            <i class="fa-solid fa-minimize"></i>
+                            Tiny it.
+                        </button>
+                        <button type="button" id="tinyAnotherURLBtn" class="main-wrapper__btn main-wrapper__tiny-another-btn" onclick="window.location.reload()">
+                            Tiny another URL
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button type="button" id="genQrCodeBtn" class="main-wrapper__btn main-wrapper__qrcode-btn">
+                            QRCode
+                            <i class="fa-solid fa-qrcode"></i>
+                        </button>
+                    </div>
                 </form>
             </div>
             <div class="main-wrapper__links-container">
-                
+                <%resultsArray.forEach((result, index) => {%>
+                    <div class="main-wrapper__links-container__link noselect">
+                        <div class="main-wrapper__links-container__link__orignal-website handle-overflow">
+                            <a href="<%=result.long_url%>" target="_blank"><h5><%=result.long_url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:/\n?]+)/im)[1];%></h5></a>
+                        </div>
+                        <div class="main-wrapper__links-container__link__short-url handle-overflow">
+                            <a href="/<%=result.short_url%>" id="shortUrl<%=index%>" data-url="<%=result.short_url%>" target="_blank"><h5><%=result.short_url%></h5></a>
+                        </div>
+                        <div class="main-wrapper__links-container__link__creation-date">
+                            <h5><%=result.creation_date ? result.creation_date : "null"%></h5>
+                        </div>
+                        <div class="main-wrapper__links-container__link__clicks">
+                            <h5><%=result.visits ? result.visits : 0 %></h5>
+                        </div>
+                        <div class="main-wrapper__links-container__link__copy-btn">
+                            <button class="copy-short-link-btn-from-history" data-url="<%=result.short_url%>">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="main-wrapper__links-container__link__analytics">
+                            <button id="analyticsBtn" class="main-wrapper__links-container__link__analytics__btn" data-index="<%=index%>"><i class="fa-solid fa-magnifying-glass-chart"></i>&nbsp;Analytics</button>
+                        </div>
+                    </div>
+                <%});%>
             </div>
             <h4 class="copied-success" id="copiedSuccessAlert">Copied to clipboard.</h4>
         </div>
+        <div class="main-wrapper__floating-qrCode-window" id="floatingQRCodeWindow">
+        </div>
+        <div id="qrcodeCanvasWrapper" class="main-wrapper__qrCode-canvas-wrapper">
+            <canvas id="qrCodeCanvas"></canvas>
+            <a id="qrCodeDownloader" download="tinyNET.jpeg">
+                <button class="canvas-img-downloader" type="button" id="qrCodeDownloaderBtn">
+                    <i class="fa-solid fa-download"></i>
+                </button>
+            </a>
+        </div>
+        <div class="main-wrapper__analytics-canvas-wrapper" id="analyticsChartCanvasWrapper">
+            <canvas id="analyticsChartCanvas" width="1200" height="800"></canvas>
+        </div>
     </main>
 </body>
-<script src="/js/home.js"></script>
+<script src="/js/home.js" type="module"></script>
 <%-include('includes/private-scripts')%>
 <%-include('includes/script')%>
 <%-include('includes/footer')%>

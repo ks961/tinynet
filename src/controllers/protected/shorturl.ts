@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { failedResponse } from "../../utils/responses";
-import { generateShortUrlCode, insertUrlData, insertUrlDataForUsers, urlCodeAlreadyExists } from "../../utils/utils";
+import { generateShortUrlCode, insertUrlData, insertUrlDataForUsers, todaysDate, urlCodeAlreadyExists, urlCodeAlreadyExistsInAccounts } from "../../utils/utils";
 import { domain, protocol } from "../../config/site";
 import { parseCookie } from "../../middleware/auth";
 import mysql from "mysql";
@@ -19,7 +19,7 @@ export async function shortUrlProtectedApi(req: Request, res: Response) {
         shortUrlCode = await generateShortUrlCode(longUrl, 7);
     }
 
-    if(await urlCodeAlreadyExists(shortUrlCode)) {
+    if(await urlCodeAlreadyExists(shortUrlCode) || await urlCodeAlreadyExistsInAccounts(shortUrlCode)) {
         res.json({
             info: "custom short url id already exists!",
             shortUrl: '',
@@ -33,13 +33,12 @@ export async function shortUrlProtectedApi(req: Request, res: Response) {
     const resultsArray = JSON.parse(JSON.stringify(results));
     if(resultsArray.length <= 0) {
         failedResponse('failed', res);
-        console.log('here');
-        
         return;
     }
     const id = resultsArray[0].id;
-
-    await insertUrlDataForUsers(id, longUrl, shortUrlCode);
+    
+    const creationDate: string = todaysDate();
+    await insertUrlDataForUsers(id, longUrl, shortUrlCode, creationDate);
 
     const shortUrl = `${protocol}://${domain}/${shortUrlCode}`;
 

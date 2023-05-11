@@ -16,7 +16,7 @@ export function isAuthenticatedProtected(req: Request, res: Response, next: Next
         return;
     }
     
-    const cookieValue = parseCookie(req);    
+    const cookieValue = parseCookie(req);
     
     const isLoggedIn = loggedInClients.some(client => (client.username === username &&  client.cookieValue === cookieValue));
     if(!isLoggedIn) {
@@ -32,7 +32,7 @@ export function isAuthenticatedForApi(req: Request, res: Response, next: NextFun
         
     const loggedInUser = loggedInClients.find(client => client.cookieValue === cookieValue);
     if(!loggedInUser) {
-        res.redirect("/login");
+        failedResponse('You are not authenticated, Login and Try again.', res);
         return;
     }
 
