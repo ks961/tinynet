@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "nodemon -r dotenv/config dist/app.js",
     "tsc": "npx tsc --watch",
+    "build": "npx tsc",
     "test": "jest"
   },
   "keywords": [],

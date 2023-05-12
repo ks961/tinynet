@@ -26,6 +26,7 @@ async function handleFormSubmit(formEvent) {
     if(longUrl.length <= 0) return;
 
     longUrl = verifyHasProtocol(longUrl) ?  longUrl : `http://${longUrl}/`;
+    console.log(longUrl);
     const requestUrl = new URL(`http://${DOMAIN}/p/short?longUrl=${longUrl}&customCode=${customCode}`);
 
     if (await requestForShortUrl(requestUrl)){
@@ -63,13 +64,22 @@ function copyShortUrlFromHistory(event) {
 }
 
 function unsecureCopyTextToClipboard(text) {
-    const input = document.createElement("input");
-    input.value = text;
-    input.style.display = "none";
-    document.body.appendChild(input);
-    input.select();
-    document.execCommand("copy");
-    document.body.removeChild(input);
+    // const input = document.createElement("input");
+    // input.value = text;
+    // input.style.display = "none";
+    // document.body.appendChild(input);
+    // input.select();
+    // document.execCommand("copy");
+    // document.body.removeChild(input);
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'absolute';
+    textarea.style.left = '-9999px';
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
 }
 
 async function handleTextCopy(text) {

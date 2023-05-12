@@ -10,7 +10,7 @@ async function handleFormSubmit(formEvent) {
 
     if(longUrl.length <= 0) return;
 
-    longUrl = verifyHasProtocol(longUrl) ? `http://${longUrl}/` : longUrl;
+    longUrl = verifyHasProtocol(longUrl) ? longUrl : `http://${longUrl}/`;
     const requestUrl = new URL(`http://${DOMAIN}/short?longUrl=${longUrl}`);
 
     requestForShortUrl(requestUrl);

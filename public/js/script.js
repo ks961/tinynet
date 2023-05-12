@@ -36,14 +36,19 @@ async function requestForShortUrl(requestUrl) {
     }
 }
 
-function unsecureCopyToClipboard(text) {
-    const input = document.createElement("input");
-    input.value = text;
-    input.style.display = "none";
-    document.body.appendChild(input);
-    input.select();
+function unsecureCopyToClipboard(element) {
+    element.select();
     document.execCommand("copy");
-    document.body.removeChild(input);
+
+    // Get the selection object
+    const selection = window.getSelection();
+
+    // Remove all ranges from the selection object
+    selection.removeAllRanges();
+
+    if (selection.rangeCount > 0) {
+       selection.collapseToStart();
+    }
 }
 
 async function handleShortUrlCopy() {
@@ -52,7 +57,7 @@ async function handleShortUrlCopy() {
     if(url.length <= 0) return;
 
     (window.isSecureContext && navigator.clipboard) ?
-        await navigator.clipboard.writeText(url) : unsecureCopyToClipboard(url);
+        await navigator.clipboard.writeText(url) : unsecureCopyToClipboard(shortUrlInput);
 
     copySuccessFeedback();
 }
