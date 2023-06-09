@@ -18,7 +18,7 @@ export function isAuthenticatedProtected(req: Request, res: Response, next: Next
     
     const cookieValue = parseCookie(req);
     
-    const isLoggedIn = loggedInClients.some(client => (client.username === username &&  client.cookieValue === cookieValue));
+    const isLoggedIn = loggedInClients.find(client => (client.username === username &&  client.cookieValue === cookieValue));
     if(!isLoggedIn) {
         res.redirect("/login");
         return;
