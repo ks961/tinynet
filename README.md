@@ -1,8 +1,7 @@
 # tinynet
-Tinynet -URL Shortener
+Tinynet -URL Shortener [ **It's a dev version.** ]
 
 Tinynet URL Shortener is a web application that allows users to create shortened URLs for any destination URLs they choose. The app is built using [CSS, TypeScript, Node.js, Express, EJS, MySQL].
-**It's a dev version.**
 
 ## Features
 
