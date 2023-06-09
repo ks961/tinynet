@@ -9,7 +9,6 @@ Tinynet URL Shortener is a web application that allows users to create shortened
 - URL shortening
 - Custom alias creation
 - Analytics tracking (e.g. clicks, days, graph view)
-- RESTful API endpoints for integration with other applications
 
 ## Installation and Usage
 
