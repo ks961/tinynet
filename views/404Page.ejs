@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=pageTitle%></title>
+
+    <%- include('includes/basic-css');%>
+    <link rel="stylesheet" href="/css/index.css">
+
+    <%- include('includes/external-includes');%>
+</head>
+<body style="height: 100%;">
+    <%-include('includes/publicNavbar')%>
+    <main style="display: grid; place-content: center;">
+        <h1>404 Content Not Found</h1>
+        <a href="/<%=pageTo%>" class="primary_link">Go To Home</a>
+    </main>
+</body>
+<%-include('includes/script')%>
+<%-include('includes/footer')%>
+</html>

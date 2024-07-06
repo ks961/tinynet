@@ -51,7 +51,6 @@ export async function homePageController(req: Request, res: Response) {
 
 export async function homePageApiController(req: Request, res: Response) {
     const shortUrlCode: string = (req.params?.shortUrlCode as string);
-    console.log(shortUrlCode)
     
     if(!verifyNotEmpty(shortUrlCode)) {
         failedResponse(`invalid request for : \`${shortUrlCode}\`.`, res);
@@ -69,7 +68,7 @@ export async function homePageApiController(req: Request, res: Response) {
     }
 
     const creationDate = resultsArray[0].creation_date;
-    const visitsInfo = getArrayFromBuffer(resultsArray[0].visits_info);
+    const visitsInfo = JSON.parse(resultsArray[0].visits_info);
 
     const responseData = {
         creationDate,

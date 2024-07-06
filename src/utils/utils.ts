@@ -2,6 +2,7 @@ import mysql from "mysql";
 import dbConn, { mysqlQuery } from "../config/mysql";
 
 export const randomNumberGenerator = async (min: number, max: number): Promise<number> => {
+    
     const num = Math.floor(Math.random() * max - min) + min;
     if(num < min || num > max) return randomNumberGenerator(min, max);
 
@@ -53,7 +54,7 @@ export async function insertUrlData(longUrl: string, shortUrlCode: string) {
     queryString = mysql.format(queryString, inserts);
     
     dbConn.query(queryString, function (err, _) {
-      if (err) throw err; /*TODO: log it to file [ why, it failed ] */
+      if (err) throw err; /* TODO: log it to file [ why, it failed ] */
     });
 }
 

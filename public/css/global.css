@@ -25,6 +25,17 @@ a {
     color: var(--text-white);
 }
 
+.primary_link {
+    font-size: 18px;
+    font-family: var(--font-primary);
+    width: max-content;
+    padding: 8px 12px;
+    color: var(--text-dark-gray);
+    border-radius: 8px;
+    border: 1px solid var(--text-dark-gray);
+    background-color: var(--color-button-secondary);
+}
+
 button {
     cursor: pointer;
     user-select: none;

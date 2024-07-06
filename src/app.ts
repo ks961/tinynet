@@ -15,15 +15,15 @@ app.use(express.static("public"));
 
 /* Routes Imports */
 import loginRoute from "./routes/public/login";
+import homeRoute from "./routes/protected/home";
 import indexRoute from "./routes/public";
 import signupRoute from "./routes/public/signup";
 import factsRoute from "./routes/public/facts";
-import homeRoute from "./routes/protected/home";
 import logoutRoute from "./routes/public/logout";
 import shortUrlRoute from "./routes/public/shorturl";
 // import { test_code } from "./utils/logger";
 
-// test_code();
+// test_code()l
 
 app.use(indexRoute);
 app.use(loginRoute);
@@ -37,7 +37,6 @@ app.listen(PORT, () => {
     console.log(`Listening on Port ${PORT}...`);
     console.log(`Link: http://${DOMAIN}`);
 });
-
 
 
 /* CLEANUP ON QUIT */

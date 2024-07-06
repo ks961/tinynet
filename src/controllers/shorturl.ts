@@ -57,17 +57,20 @@ export function getArrayFromBuffer(result: any): ISUrlClickInfo[] {
 }
 
 async function fetchUrlInfoFromDB(shortUrlCode: string): Promise<string | undefined> {
-    let resultsArray = await fetchLongUrlFromRandomUrlTable(shortUrlCode);    
+    let resultsArray = await fetchLongUrlFromRandomUrlTable(shortUrlCode);
+        
     if(resultsArray.length > 0)
         return resultsArray[0].long_url;
         
     resultsArray = await fetchUrlInfoFromUserUrlTable(shortUrlCode);
+
     
     if(resultsArray.length <= 0)
         return undefined;
     
     const totalVists: number = resultsArray[0].visits ?? 0;
-    const visitsInfo: ISUrlClickInfo[] = getArrayFromBuffer(resultsArray[0].visits_info);
+    
+    const visitsInfo: ISUrlClickInfo[] = JSON.parse(resultsArray[0].visits_info);
 
     const date = todaysDate();
     const index = visitsInfo.findIndex(visits => visits.visited_date === date);
@@ -94,11 +97,12 @@ export async function shortUrlRedirectController(req: Request, res: Response) {
         });
         return;
     }
-
+    
     const longUrl = await fetchUrlInfoFromDB(shortUrlCode);
-
+    
     if(longUrl === undefined) {
         res.render("404Page", {
+            pageTo: "",
             pageTitle: '404 Page',
         });
         return;
